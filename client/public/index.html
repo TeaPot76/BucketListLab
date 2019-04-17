@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Buckets</title>
-    <script src="js/bundle.js"></script>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <body>
-    <nav class="header"><h1> Bucket List</h1>
-   </nav>
+
+<head>
+  <meta charset="utf-8">
+  <title>Buckets</title>
+  <script src="js/bundle.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <nav class="header">
+    <h1> Bucket List</h1>
+  </nav>
   <div class="main">
 
+    <form id="bucket-form">
+      <label for="activity">Activity:</label>
+      <input type="text" id="activity" />
+      <label for="date">Date:</label>
+      <input type="date" id="date" />
+      <label for="location">Location:</label>
+      <input type="text" id="location" />
+      <label for="status">Status:</label>
+      <input type="text" id="status" />
+      <input type="submit" value="Save" id="save" />
+    </form>
 
+    <div id="buckets"></div>
+  </div>
 
-<h3></h3>
-<form id="bucket-form">
-  <label for="activity">Activity:</label>
- <input type="text" id="activity"/>
- <label for="date">Date:</label>
-<input type="date" id="date"/>
-<label for="location">Location:</label>
-<input type="text" id="location"/>
-<label for="status">Status:</label>
-<input type="text" id="status"/>
-<input type="submit" value="Save" id="save"/>
-</form>
+  <footer>@Grant & Lidek</footer>
 
-<div id="buckets"></div>
-</div>
+</body>
 
-<footer>@Grant & Lidek</footer>
-
-  </body>
 </html>

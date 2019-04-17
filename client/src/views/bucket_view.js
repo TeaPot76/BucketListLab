@@ -1,6 +1,6 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const BucketView = function(container){
+const BucketView = function(container) {
   this.container = container;
 
 };
@@ -19,7 +19,6 @@ BucketView.prototype.render = function(bucket) {
   bucketContainer.appendChild(location);
 
   const status = this.createDetail(bucket.status);
-  // status.textContent = bucket.status;
   bucketContainer.appendChild(status);
 
   const completeButton = document.createElement('button');
@@ -28,29 +27,28 @@ BucketView.prototype.render = function(bucket) {
   bucketContainer.appendChild(completeButton);
 
   completeButton.addEventListener('click', (evt) => {
-  PubSub.publish('BucketView:update-completed', evt.target.value);
+    PubSub.publish('BucketView:update-completed', evt.target.value);
   });
 
   const deleteButton = this.createDeleteButton(bucket._id);
   bucketContainer.appendChild(deleteButton);
 
-
   this.container.appendChild(bucketContainer);
 };
 
-BucketView.prototype.createHeading = function(textContent){
+BucketView.prototype.createHeading = function(textContent) {
   const heading = document.createElement('h3');
   heading.textContent = textContent;
   return heading;
 };
 
-BucketView.prototype.createDetail = function(textContent){
+BucketView.prototype.createDetail = function(textContent) {
   const detail = document.createElement('p');
   detail.textContent = textContent;
   return detail;
 };
 
-BucketView.prototype.createDeleteButton = function(bucketId){
+BucketView.prototype.createDeleteButton = function(bucketId) {
   const button = document.createElement('button');
   button.classList.add('delete-btn');
   button.value = bucketId;
@@ -59,23 +57,10 @@ BucketView.prototype.createDeleteButton = function(bucketId){
   button.addEventListener('click', (evt) => {
     PubSub.publish('BucketView:bucket-delete-cliked', evt.target.value);
   });
-return button;
+  return button;
 };
 
 
-//
-// BucketView.prototype.createUpdateBox = function(bucketId){
-//   const updateButton = document.createElement('button');
-//   updateButton.classList.add('submit');
-//   updateButton.value = bucketId;
-//   updateButton.textContent = "update"
-//
-//
-//   updateButton.addEventListener('input', (evt) => {
-//     PubSub.publish('BucketView:bucket-completed', evt.target.value);
-//   });
-// return updateButton;
-// };
 
 
 module.exports = BucketView;

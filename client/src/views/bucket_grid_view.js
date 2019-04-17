@@ -7,8 +7,8 @@ const BucketGridView = function(container) {
 
 };
 
-BucketGridView.prototype.bindEvents = function(){
-  PubSub.subscribe('BucketsList:data-loaded', (evt) =>{
+BucketGridView.prototype.bindEvents = function() {
+  PubSub.subscribe('BucketsList:data-loaded', (evt) => {
     this.render(evt.detail);
   });
 

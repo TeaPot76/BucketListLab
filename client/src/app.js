@@ -2,7 +2,7 @@ const BucketFormView = require('./views/bucket_form_view.js');
 const BucketGridView = require('./views/bucket_grid_view.js');
 const Buckets = require('./models/buckets.js');
 
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
 
   const bucketForm = document.querySelector('#bucket-form');
   const bucketFormView = new BucketFormView(bucketForm);
