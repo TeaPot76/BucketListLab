@@ -21,7 +21,8 @@ BucketFormView.prototype.createBucket = function (form) {
   const newBucket = {
     activity: form.activity.value,
     date: form.date.value,
-    location: form.location.value
+    location: form.location.value,
+    status: form.status.value
     };
 
   return newBucket;

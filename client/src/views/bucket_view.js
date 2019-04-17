@@ -19,13 +19,21 @@ BucketView.prototype.render = function(bucket) {
   bucketContainer.appendChild(location);
 
   const status = this.createDetail(bucket.status);
+  // status.textContent = bucket.status;
   bucketContainer.appendChild(status);
+
+  const completeButton = document.createElement('button');
+  completeButton.textContent = 'Complete';
+  completeButton.value = bucket._id;
+  bucketContainer.appendChild(completeButton);
+
+  completeButton.addEventListener('click', (evt) => {
+  PubSub.publish('BucketView:update-completed', evt.target.value);
+  });
 
   const deleteButton = this.createDeleteButton(bucket._id);
   bucketContainer.appendChild(deleteButton);
 
-  const updateBox = this.createUpdateBox(bucket._id);
-  bucketContainer.appendChild(updateBox);
 
   this.container.appendChild(bucketContainer);
 };
@@ -54,18 +62,20 @@ BucketView.prototype.createDeleteButton = function(bucketId){
 return button;
 };
 
-BucketView.prototype.createUpdateBox = function(bucketId){
-  const updateButton = document.createElement('button');
-  updateButton.classList.add('submit');
-  updateButton.value = bucketId;
-  updateButton.textContent = "update"
 
-
-  updateButton.addEventListener('input', (evt) => {
-    PubSub.publish('BucketView:bucket-completed', evt.target.value);
-  });
-return updateButton;
-};
+//
+// BucketView.prototype.createUpdateBox = function(bucketId){
+//   const updateButton = document.createElement('button');
+//   updateButton.classList.add('submit');
+//   updateButton.value = bucketId;
+//   updateButton.textContent = "update"
+//
+//
+//   updateButton.addEventListener('input', (evt) => {
+//     PubSub.publish('BucketView:bucket-completed', evt.target.value);
+//   });
+// return updateButton;
+// };
 
 
 module.exports = BucketView;

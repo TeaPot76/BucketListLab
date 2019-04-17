@@ -59,12 +59,12 @@
 
  router.put('/:id', (req, res) => {
    const id = req.params.id;
-   const completed = req.body
+   const newData = req.body
 
    collection
    .updateOne(
      {_id: ObjectID(id)},
-     {$set: completed },
+     {$set: newData },
 
   )
   .then(()=> collection.find().toArray())

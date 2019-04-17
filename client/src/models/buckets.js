@@ -19,6 +19,13 @@ Buckets.prototype.bindEvents = function(){
   PubSub.subscribe('BucketView:bucket-completed', (evt)=>{
     this.updateBucket(evt.detail);
   });
+
+  PubSub.subscribe('BucketView:update-completed', (evt) => {
+    this.request.put(evt.detail, {"status": "Complete"})
+      .then( (bucket) => {
+        PubSub.publish('BucketsList:data-loaded', bucket);
+      });
+  });
 };
 
 Buckets.prototype.getData = function(){
@@ -47,13 +54,17 @@ Buckets.prototype.deleteBucket = function(bucketID){
   .catch(console.error);
 };
 
-Buckets.prototype.updateBucket = function(bucketID){
-  this.request.update(bucketID)
-  .then((buckets)=> {
-    PubSub.publish('BucketsList:data-loaded', buckets);
-  })
-  .catch(console.error);
-};
+
+
+
+
+// Buckets.prototype.updateBucket = function(bucketID){
+//   this.request.update(bucketID)
+//   .then((buckets)=> {
+//     PubSub.publish('BucketsList:data-loaded', buckets);
+//   })
+//   .catch(console.error);
+// };
 
 
 module.exports = Buckets;
