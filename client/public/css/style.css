@@ -1,0 +1,40 @@
+body {
+  font-family: 'Source Serif', serif;
+  background-image: url('california_west_motorcycle.jpg');
+  width: 80%;
+  margin: 0 auto;
+  font-color: white;
+}
+
+h1, h2, h3, p {
+  color: white;
+  font-family: 'Skranji', cursive;
+}
+
+input {
+  margin: 0.2em 1.5em 0.2em 0.4em;
+}
+
+input[type=number], input[type=text],  input[type=date]
+ {
+  border-radius: 5px;
+  padding: 10px;
+  border-color: black;
+}
+
+
+input[type=submit] {
+  display: block;
+  border-radius: 5px;
+  background-color: green;
+  padding: 4px 10px 6px;
+  margin: 1em 0;
+}
+
+ button {
+    background-color: green;
+    display: block;
+    border-radius: 5px;
+    padding: 4px 10px 6px;
+    margin: 1em 0;
+}
